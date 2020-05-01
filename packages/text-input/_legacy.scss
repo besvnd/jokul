@@ -1,0 +1,125 @@
+@import "~@fremtind/jkl-core/variables/_colors.scss";
+
+$text-input-border-color: $svart;
+$text-input-background-color: $hvit;
+$text-input-text-color: $svart;
+$text-input-placeholder-color: $gra-60;
+$text-input-selection-color: transparentize($info, 0.8);
+$text-input-selection-color--error: transparentize($feil, 0.8);
+$text-input-focus-color: $info;
+$text-input-error-color: $feil;
+
+$text-input-border-color--inverted: $gra-30;
+$text-input-background-color--inverted: transparent;
+$text-input-text-color--inverted: $hvit;
+$text-input-placeholder-color--inverted: $gra-50;
+$text-input-selection-color--inverted: transparentize($info--darkbg, 0.75);
+$text-input-selection-color--error-inverted: transparentize($feil--darkbg, 0.75);
+$text-input-focus-color--inverted: $info--darkbg;
+$text-input-error-color--inverted: $feil--darkbg;
+
+.jkl-text-input {
+    &__input {
+        color: $text-input-text-color;
+        background-color: $text-input-background-color;
+        box-shadow: inset 0 0 0 rem(1px) $text-input-border-color, 0 0 0 0 $text-input-border-color;
+        box-shadow: inset 0 0 0 rem(1px) var(--text-input-border-color), 0 0 0 0 var(--text-input-border-color);
+
+        &::placeholder {
+            color: $text-input-placeholder-color;
+            color: var(--text-input-placeholder-color);
+        }
+
+        &::selection {
+            background-color: $text-input-selection-color;
+            background-color: var(--text-input-selection-color);
+        }
+
+        &:focus,
+        &:hover {
+            box-shadow: inset 0 0 0 rem(1px) $text-input-focus-color, 0 0 0 rem(1px) $text-input-focus-color;
+            box-shadow: inset 0 0 0 rem(1px) var(--text-input-border-color),
+                0 0 0 rem(1px) var(--text-input-border-color);
+        }
+
+        &[aria-invalid="true"],
+        &:invalid {
+            box-shadow: inset 0 0 0 rem(1px) $text-input-error-color, 0 0 0 0 $text-input-error-color;
+            box-shadow: inset 0 0 0 rem(1px) var(--text-input-border-color), 0 0 0 0 var(--text-input-border-color);
+
+            &::selection {
+                background-color: $text-input-selection-color--error;
+                background-color: var(--text-input-selection-color--error);
+            }
+
+            &:focus,
+            &:hover {
+                box-shadow: inset 0 0 0 rem(1px) $text-input-error-color, 0 0 0 rem(1px) $text-input-error-color;
+                box-shadow: inset 0 0 0 rem(1px) var(--text-input-border-color),
+                    0 0 0 rem(1px) var(--text-input-border-color);
+            }
+        }
+    }
+
+    &__action-button:focus,
+    &__action-button:hover {
+        color: $text-input-focus-color;
+        color: var(--text-input-focus-color);
+    }
+
+    &--inverted {
+        & .jkl-text-input__input {
+            color: $text-input-text-color--inverted;
+            color: var(--text-input-text-color);
+            background-color: $text-input-background-color--inverted;
+            background-color: var(--text-input-background-color);
+            box-shadow: inset 0 0 0 rem(1px) $text-input-border-color--inverted,
+                0 0 0 0$text-input-border-color--inverted;
+            box-shadow: inset 0 0 0 rem(1px) var(--text-input-border-color), 0 0 0 0 var(--text-input-border-color);
+
+            &::placeholder {
+                color: $text-input-placeholder-color--inverted;
+                color: var(--text-input-placeholder-color);
+            }
+
+            &::selection {
+                background-color: $text-input-selection-color--inverted;
+                background-color: var(--text-input-selection-color);
+            }
+
+            &:focus,
+            &:hover {
+                box-shadow: inset 0 0 0 rem(1px) $text-input-focus-color--inverted,
+                    0 0 0 rem(1px) $text-input-focus-color--inverted;
+                box-shadow: inset 0 0 0 rem(1px) var(--text-input-border-color),
+                    0 0 0 rem(1px) var(--text-input-border-color);
+            }
+
+            &[aria-invalid="true"],
+            &:invalid {
+                box-shadow: inset 0 0 0 rem(1px) $text-input-error-color--inverted,
+                    0 0 0 0 $text-input-error-color--inverted;
+                box-shadow: inset 0 0 0 rem(1px) var(--text-input-border-color), 0 0 0 0 var(--text-input-border-color);
+
+                &::selection {
+                    background-color: $text-input-selection-color--error-inverted;
+                    background-color: var(--text-input-selection-color--error);
+                }
+
+                &:focus,
+                &:hover {
+                    box-shadow: inset 0 0 0 rem(1px) $text-input-error-color--inverted,
+                        0 0 0 rem(1px) $text-input-error-color--inverted;
+                    box-shadow: inset 0 0 0 rem(1px) var(--text-input-border-color),
+                        0 0 0 rem(1px) var(--text-input-border-color);
+                }
+            }
+        }
+
+        & .jkl-text-input__action-button:hover,
+        & .jkl-text-input__action-button:focus {
+            color: $text-input-focus-color--inverted;
+            color: var(--text-input-focus-color);
+        }
+    }
+}

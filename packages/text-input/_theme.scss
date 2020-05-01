@@ -1,0 +1,24 @@
+@import "~@fremtind/jkl-core/variables/_colors.scss";
+
+:root,
+[data-theme="light"] {
+    --text-input-border-color: #{$svart};
+    --text-input-background-color: #{$hvit};
+    --text-input-text-color: #{$svart};
+    --text-input-placeholder-color: #{$gra-60};
+    --text-input-selection-color: #{transparentize($info, 0.8)};
+    --text-input-selection-color--error: #{transparentize($feil, 0.8)};
+    --text-input-focus-color: #{$info};
+    --text-input-error-color: #{$feil};
+}
+
+[data-theme="dark"] {
+    --text-input-border-color: #{$gra-30};
+    --text-input-background-color: transparent;
+    --text-input-text-color: #{$hvit};
+    --text-input-placeholder-color: #{$gra-50};
+    --text-input-selection-color: #{transparentize($info--darkbg, 0.75)};
+    --text-input-selection-color--error: #{transparentize($feil--darkbg, 0.75)};
+    --text-input-focus-color: #{$info--darkbg};
+    --text-input-error-color: #{$feil--darkbg};
+}
