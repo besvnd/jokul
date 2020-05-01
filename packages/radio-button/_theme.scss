@@ -1,0 +1,18 @@
+@import "~@fremtind/jkl-core/variables/_colors.scss";
+
+:root,
+[data-theme="light"] {
+    --radio-button-circle-color: #{$svart};
+    --radio-button-background-color: #{$hvit};
+    --radio-button-dot-color: #{$svart};
+    --radio-button-focus-color: #{$info};
+    --radio-button-error-color: #{$feil};
+}
+
+[data-theme="dark"] {
+    --radio-button-circle-color: #{$hvit};
+    --radio-button-background-color: transparent;
+    --radio-button-dot-color: #{$hvit};
+    --radio-button-focus-color: #{$info--darkbg};
+    --radio-button-error-color: #{$feil--darkbg};
+}

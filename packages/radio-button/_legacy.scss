@@ -1,0 +1,56 @@
+@import "~@fremtind/jkl-core/variables/_colors.scss";
+
+$radio-button-background-color: $hvit;
+$radio-button-color: $svart;
+
+.jkl-radio-button {
+    html:not([data-mousenavigation]) &:focus ~ .jkl-radio-button__dot {
+        &:before {
+            box-shadow: 0 0 0 rem(2px) $focus-color;
+        }
+    }
+
+    &__dot {
+        border-color: $radio-button-color;
+        background-color: $radio-button-background-color;
+
+        &:after {
+            background-color: $radio-button-color;
+        }
+    }
+
+    &--error {
+        .jkl-radio-button__dot {
+            border-color: $error-color;
+            border-color: var(--radio-button-circle-color);
+
+            &:after {
+                background-color: $error-color;
+                background-color: var(--radio-button-dot-color);
+            }
+        }
+    }
+
+    &--inverted {
+        .jkl-radio-button__dot {
+            border-color: $hvit;
+            border-color: var(--radio-button-circle-color);
+            background-color: transparent;
+            background-color: var(--radio-button-background-color);
+            &:after {
+                background-color: $hvit;
+                background-color: var(--radio-button-dot-color);
+            }
+        }
+
+        &.jkl-radio-button--error .jkl-radio-button__dot {
+            border-color: $feil--darkbg;
+            border-color: var(--radio-button-circle-color);
+        }
+
+        &.jkl-radio-button--error .jkl-radio-button__dot:after {
+            background-color: $feil--darkbg;
+            background-color: var(--radio-button-dot-color);
+        }
+    }
+}
