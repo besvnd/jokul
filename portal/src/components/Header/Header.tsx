@@ -1,22 +1,28 @@
 import React, { useLayoutEffect, useState } from "react";
-import { Link } from "gatsby";
 import classNames from "classnames";
 
 import { useFullscreenMenu } from "../../contexts/fullscreenMenuContext";
 import { useNavigationLinks } from "./useNavigationLinks";
 import { FullScreenMenu } from "./components/FullScreenMenu";
+import { Home } from "./components/Home";
 import "./header.scss";
 
 export const Header = ({ className }: { className?: string }) => {
     const { setMenuIsOpen } = useFullscreenMenu();
     const [collapsed, setCollapsed] = useState(false);
+
+    const closeMenu = () => setMenuIsOpen("");
+    const handleScroll = () => {
+        setCollapsed(window.scrollY > 96);
+    };
+
     useLayoutEffect(() => {
         setMenuIsOpen("");
-        window &&
-            window.addEventListener("scroll", () => {
-                setCollapsed(window.scrollY > 96);
-            });
+        window && window.addEventListener("scroll", handleScroll);
+
+        return () => window && window.removeEventListener("scroll", handleScroll);
     }, [setMenuIsOpen]);
+
     const { profileDocPages, getStartedDocPages, componentDocPages, PageType } = useNavigationLinks();
     const componentClassName = classNames(
         {
@@ -26,19 +32,11 @@ export const Header = ({ className }: { className?: string }) => {
         className,
     );
 
-    function hideOpenMenus() {
-        const openMenus = document && document.querySelectorAll(".jkl-portal-full-screen-menu--open");
-        openMenus.forEach((menu) => {
-            menu.setAttribute("hidden", "true"); // hide all open full screen menus
-        });
-        setMenuIsOpen(""); // reset open menu in context to remove active marker
-    }
-
     return (
         <header className={componentClassName}>
-            <Link to="/" onClick={hideOpenMenus} className="jkl-portal-header__title">
+            <Home className="jkl-portal-header__title" closeMenu={closeMenu}>
                 Jøkul
-            </Link>
+            </Home>
             <nav className="jkl-portal-header__navigation">
                 <ul className="jkl-portal-header__navigation-list">
                     <li className="jkl-portal-header__navigation-item">
